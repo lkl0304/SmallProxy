@@ -30,7 +30,6 @@ public class HandleRequest extends Thread {
 			cdata = new Scanner(clSocket.getInputStream());
 			int beginIndex = KHost.length() + 1;
 			String line;
-			// ¶ÁÈ¡¿Í»§¶ËµÄÇëÇóÍ·
 			while(cdata.hasNextLine() && (line = cdata.nextLine()).length() != 0)
 			{
 				if(line.length() > 5)
@@ -47,7 +46,6 @@ public class HandleRequest extends Thread {
 							remoteport = 80;
 						}
 					}
-					// ÅÐ¶ÏÊÇ·ñÎªhttpsÇëÇó
 					if(line.substring(0, line.indexOf(' ')).equals("CONNECT")){
 						https = true;
 					}
@@ -59,7 +57,7 @@ public class HandleRequest extends Thread {
 			
 			if(remotehost != null)
 			{
-				seSocket = new Socket(remotehost, remoteport); // Á¬½Óµ½Ô¶³ÌÖ÷»ú
+				seSocket = new Socket(remotehost, remoteport);
 				if (https) {
 					List<String> list = new ArrayList<>();
 					list.add("HTTP/1.1 200 Connection Established");
@@ -73,15 +71,14 @@ public class HandleRequest extends Thread {
 				}
 			}
 		} catch (ConnectException c) {
-			System.err.println("Á´½Ó³¬Ê±");
+			System.err.println("连接超时");
 		} catch (SocketException se) {
-			System.err.println("ÎÞ·¨Á¬½Ó-> " + remotehost + ":" + remoteport);
+			System.err.println("无法连接-> " + remotehost + ":" + remoteport);
 		} catch (Exception e) {
-			System.err.println("·¢Éú´íÎó" + e);
+			System.err.println("发生错误" + e);
 		}
 	}
 	
-	// ½«header×ª»»ÎªpathÐÎÊ½
 	private void toUri(List<String> buff)
 	{
 		for (int i = 0; i < buff.size(); i++)
