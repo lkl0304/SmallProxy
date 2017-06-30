@@ -5,8 +5,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class LocalServer{
-	private static int   LPort   ;  // ¼àÌý¶Ë¿Ú
-	private ServerSocket loSocket;  // ±¾µØÌ×½Ó×Ö
+	private static int   LPort   ; 
+	private ServerSocket loSocket; 
 	
 	public LocalServer() throws IOException {
 		loSocket = new ServerSocket(LPort);
@@ -18,7 +18,7 @@ public class LocalServer{
 			while(true)
 			{
 				Socket ct = loSocket.accept();
-				new HandleRequest(ct).start(); // ÐÂ½¨Ïß³Ì´¦Àí¿Í»§¶ËÇëÇó
+				new HandleRequest(ct).start(); 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
