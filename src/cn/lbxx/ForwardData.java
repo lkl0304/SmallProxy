@@ -43,7 +43,7 @@ public class ForwardData extends Thread {
 			outStream.close();
 			inStream.close();
 		} catch (IOException ie) {
-			System.err.println("http Êý¾Ý×ª·¢Òì³£ " + ie);
+			System.err.println("http 数据转发异常 " + ie);
 		}
 	}
 }
